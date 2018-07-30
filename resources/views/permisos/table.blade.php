@@ -1,3 +1,5 @@
+{!!$permisos->render()!!}
+
 <table class="table table-responsive" id="subeArchivos-table">
     <thead>
         <th>Nombre</th>
@@ -27,3 +29,5 @@
     @endforeach
     </tbody>
 </table>
+
+{!!$permisos->render()!!}
