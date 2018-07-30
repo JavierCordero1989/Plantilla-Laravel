@@ -24,8 +24,10 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="#" class="logo">
-            <b>InfyOm</b>
+        <a href="{!! url('/home') !!}" class="logo">
+            {{-- <b>Javier Cordero</b> --}}
+            <span class="logo-mini"><b>JC</b></span>
+            <span class="logo-lg"><b>Javier Cordero</b></span>
         </a>
 
         <!-- Header Navbar -->
@@ -54,18 +56,18 @@
                                      class="img-circle" alt="User Image"/>
                                 <p>
                                     {!! Auth::user()->name !!}
-                                    <small>Member since {!! Auth::user()->created_at->format('M. Y') !!}</small>
+                                    <small>Miembro desde {!! Auth::user()->created_at->format('M. Y') !!}</small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="{!! route('users.edit', [Auth::user()->id]) !!}" class="btn btn-default btn-flat">Perfil</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        Sign out
+                                        Cerrar sesión
                                     </a>
                                     <form id="logout-form" action="{{ url('/logout') }}" method="POST"
                                           style="display: none;">
