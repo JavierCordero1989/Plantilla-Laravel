@@ -27,8 +27,6 @@ class LogSuccessfulLogout
      */
     public function handle(Logout $event)
     {
-        $date = \Carbon\Carbon::now(); //Obtiene la hora actual
-
         //Se realiza una consulta para obtener el ultimo registro del usuario que esta logueado
         $id_registro = DB::table('log_users_login')
             ->select(DB::RAW('max(id) as ID_LOG'))
@@ -38,6 +36,6 @@ class LogSuccessfulLogout
         //Se actualiza la tabla en base al ID obtenido
         DB::table('log_users_login')
             ->where('id', $id_registro->ID_LOG)
-            ->update(['hora_desconexion' => $date->toTimeString()]);
+            ->update(['cierre_sesion' => \Carbon\Carbon::now()]);
     }
 }

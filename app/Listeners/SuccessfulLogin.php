@@ -27,13 +27,10 @@ class SuccessfulLogin
      */
     public function handle(Login $event)
     {
-        $date = \Carbon\Carbon::now();
-
         DB::table('log_users_login')
         ->insert([
             'user_id' => $event->user->id,
-            'fecha_inicio_sesion' => $date->toDateString(),
-            'hora_conexion' => $date->toTimeString()
+            'inicio_sesion' => \Carbon\Carbon::now()
         ]);
     }
 }
