@@ -184,6 +184,8 @@ return [
 
         //Para los roles y permisos
         Spatie\Permission\PermissionServiceProvider::class,
+        //Para procesar archivos de Excel
+        Maatwebsite\Excel\ExcelServiceProvider::class,
     ],
 
     /*
@@ -235,6 +237,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class, //Archivos de excel
     ],
 
 ];
