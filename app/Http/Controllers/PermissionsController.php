@@ -13,7 +13,8 @@ class PermissionsController extends Controller
         /** Hacer una seleccion de todos los elementos de la BD para llevarlos a la
          *  vista de index.
          */
-        $permisos = Permission::all();
+        // $permisos = Permission::all()->paginate(15);
+        $permisos = Permission::orderBy('id', 'asc')->paginate(15);
 
         /** Se regresa a la vista de index en la carpeta deseada, con los datos obtenidos 
          *  desde la base de datos.
