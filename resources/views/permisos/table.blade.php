@@ -1,9 +1,13 @@
-{!!$permisos->render()!!}
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
 
-<table class="table table-responsive" id="subeArchivos-table">
+{{-- {!!$permisos->render()!!} --}}
+
+<table id="tabla-permisos" class="table table-responsive">
     <thead>
         <th>Nombre</th>
-        <th colspan="3">Accion</th>
+        <th>Accion</th>
     </thead>
     <tbody>
     @foreach($permisos as $permiso)
@@ -30,4 +34,15 @@
     </tbody>
 </table>
 
-{!!$permisos->render()!!}
+{{-- {!!$permisos->render()!!} --}}
+
+@section('scripts')
+    @include('layouts.datatables_js')
+    <script>
+        var tabla;
+
+        $(document).ready(function() {
+            tabla = $('#tabla-permisos').DataTable();
+        });
+    </script>
+@endsection
