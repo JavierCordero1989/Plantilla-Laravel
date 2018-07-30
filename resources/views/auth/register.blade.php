@@ -37,13 +37,13 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        <a href="{{-- url('/home') --}}"><b>InfyOm </b>Generator</a>
     </div>
 
     <div class="register-box-body">
         <p class="login-box-msg">Sign Up</p>
 
-        <form method="post" action="{{ url('/register') }}">
+        <form method="post" action="{{-- url('/register') --}}">
 
             {!! csrf_field() !!}
 
@@ -107,7 +107,7 @@
             </div>
         </form>
 
-        <a href="{{ url('/login') }}" class="text-center">I already have a membership</a>
+        <a href="{{-- url('/login') --}}" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
 </div>
