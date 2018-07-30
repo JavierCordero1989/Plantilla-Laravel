@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 
 class UsersTableSeeder extends Seeder
 {
@@ -11,6 +12,15 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
+        $user = \App\User::create([
+            'name' => 'Super Admin',
+            'email' => 'root@root.com',
+            'password' => bcrypt('aE%0xtW[[YUnm}nQ')
+        ]);
+
+        $user->assignRole('Super Admin');
+        // $user->givePermissionTo(Permission::all());
+
         \App\User::create([
             'name' => 'Administrador',
             'email' => 'admin@admin.com',

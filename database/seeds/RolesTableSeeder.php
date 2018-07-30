@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
 
-class PermissionsTableSeeder extends Seeder
+class RolesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,11 +14,13 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create([
-            'name' => 'permissions.all',
+        $role = Role::create([
+            'name' => 'Super Admin',
             'guard_name' => 'web',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        $role->givePermissionTo(Permission::all());
     }
 }
