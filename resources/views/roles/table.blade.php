@@ -1,7 +1,11 @@
+@section('css')
+    @include('layouts.datatables_css')
+@endsection
+
 <table class="table table-responsive" id="subeArchivos-table">
     <thead>
         <th>Nombre</th>
-        <th colspan="3">Accion</th>
+        <th>Accion</th>
     </thead>
     <tbody>
     @foreach($roles as $rol)
@@ -27,3 +31,7 @@
     @endforeach
     </tbody>
 </table>
+
+@section('scripts')
+    @include('layouts.datatables_js')
+@endsection

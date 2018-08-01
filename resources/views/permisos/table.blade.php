@@ -4,7 +4,7 @@
 
 {{-- {!!$permisos->render()!!} --}}
 
-<table id="tabla-permisos" class="table table-responsive">
+<table class="table table-responsive">
     <thead>
         <th>Nombre</th>
         <th>Accion</th>
@@ -38,11 +38,4 @@
 
 @section('scripts')
     @include('layouts.datatables_js')
-    <script>
-        var tabla;
-
-        $(document).ready(function() {
-            tabla = $('#tabla-permisos').DataTable();
-        });
-    </script>
 @endsection
