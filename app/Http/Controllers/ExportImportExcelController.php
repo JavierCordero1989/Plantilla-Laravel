@@ -15,6 +15,10 @@ set_time_limit(300);
 
 class ExportImportExcelController extends Controller
 {
+    public function create() {
+        return view('excel.create');
+    }
+
     public function exportar_a_excel() {
         //Se deben tomar los datos que se quieren exportar al archivo excel
         $data = Model::all();
