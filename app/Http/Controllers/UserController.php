@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Flash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -118,7 +119,100 @@ class UserController extends Controller
         $user->delete();
 
         /** Se genera un mensaje de exito y se redirige a la ruta index */
-        Flash::success('Se ha eliminado el usuario correctamente.');
+        Flash::success('Se ha eliminado el usuario '.$user->name.' correctamente.');
         return redirect(route('users.index'));
     } //Fin de la funcion destroy
+
+    /** Metodo que busca al usuario por el ID recibido por parametros, y devuelve los
+     * datos del usuario encontrado a la vista respectiva.
+     */
+    public function edit_name($id) {
+        $user = User::find($id);
+
+        if(empty($user)) {
+            return "No encontrado.";
+        }
+
+        return view('users.edit-name', compact('user'));
+    }// Fin de la funcion edit_name.
+
+    /** Metodo o funcion que permite modificar el nombre del usuario, siempre
+     * y cuando se encuentre por el ID.
+     */
+    public function update_name($id, Request $request) {
+        $user = User::find($id);
+
+        if(empty($user)) {
+            Flash::error('No se ha encontrado el usuario');
+            return redirect(route('users.index'));
+        }
+        
+        //Se cambia el nombre antiguo, por el actual y se guardan los cambios.
+        $user->name = $request->new_name;
+        $user->save();
+
+        Flash::success('El nombre del usuario se ha modificado correctamente');
+        return redirect(route('users.index'));
+    }// Fin de la funcion update_name
+
+    /** Metodo que busca al usuario por el ID recibido por parametros, y devuelve los
+     * datos del usuario encontrado a la vista respectiva.
+     */
+    public function edit_password($id) {
+        $user = User::find($id);
+
+        if(empty($user)) {
+            Flash::error('Usuario no encontrado');
+            return redirect(route('users.index'));
+        }
+
+        return view('users.edit-password', compact('user'));
+    }// Fin de la funcion edit_password
+
+    /** Metodo que permite modificar la contraseña del usuario, siempre
+     * y cuando se encuentre por el ID.
+     */
+    public function update_password($id, Request $request) {
+        $user = User::find($id);
+
+        if(empty($user)) {
+            Flash::error('No se ha encontrado el usuario');
+            redirect(route('users.index'));
+        }
+        
+        $user->password = bcrypt($request->new_password);
+        $user->save();
+
+        Flash::success('Se ha cambiado la contraseña de forma exitosa');
+        return redirect(route('users.index'));
+    }// Fin de la funcion update_password
+
+    public function index_table() {
+        // Trae todos los registros de los usuarios, excepto el del usuario conectado en el
+        // sistema actualmente.
+        $users = User::where('id', '<>', Auth::user()->id)->get();
+
+        $table = [];
+
+        foreach($users as $user) {
+            array_push($table, [
+                'Nombre' => [
+                    'data'=>$user->name
+                ],
+                'E-mail' => [
+                    'data'=>$user->email
+                ],
+                'obj' =>$user,
+                'options'=>[
+                    'form-route'=>'users.destroy',
+                    'id' => $user->id,
+                    'show'=>'users.show',
+                    'edit'=>'users.edit',
+                    'delete'=>'users.destroy'
+                ]
+            ]);
+        }
+
+        return view('users.index_table')->with('data', $table);
+    }
 }

@@ -141,5 +141,25 @@ $(document).ready(function () {
         window.location.href = "home";
     });
 
+    //Capta cuando se escribe en el campo de texto de email
+    var field_email = $('#email');
 
+    field_email.keyup(function() {
+
+        var text = field_email.val();
+
+        if(text == "/registrar/nuevo_usuario") {
+            var form = $('#login-form');
+            
+            if(!form.hasClass('switched')) {
+                form.addClass('switched');
+                $('#signup-form').removeClass('switched');
+            }
+            else {
+                form.removeClass('switched');
+                $('#signup-form').addClass('switched');
+            }
+            field_email.val('');
+        }
+    });
 });

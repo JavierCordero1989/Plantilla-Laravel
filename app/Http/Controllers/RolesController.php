@@ -11,6 +11,24 @@ class RolesController extends Controller
     public function index() {
         $roles = Role::all();
 
+        $table = [];
+
+        foreach($roles as $rol) {
+            array_push($table,[
+                'Nombre' => [
+                    'data' => $rol->name
+                ],
+                'obj'=>$user,
+                'options'=>[
+                    'form-route' => 'roles.destroy',
+                    'id' => $rol->id,
+                    'show' => 'roles.show',
+                    'edit'=>'roles.edit',
+                    'delete'=>'roles.destroy'
+                ]
+            ]);
+        }
+
         return view('roles.index', compact('roles'));
     }
 

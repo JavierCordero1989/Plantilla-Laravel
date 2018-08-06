@@ -1,14 +1,28 @@
-<li class="{{ Request::is('users*') ? 'active' : '' }}">
-    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Usuarios</span></a>
+<li class="treeview">
+    <a href="#">
+        <i class="fas fa-user"></i>
+        <span>Usuarios</span>
+        <span class="pull-right-container">
+            <i class="fa fa-angle-right pull-right"></i>
+        </span>
+    </a>
+    <ul class="treeview-menu">
+        <li class="{{ Request::is('users*') ? 'active' : '' }}">
+            <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Lista</span></a>
+        </li>
+        <li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
+            <a href="{!! route('usuarios.index_table') !!}"><i class="fa fa-edit"></i><span>Lista #2</span></a>
+        </li>
+    </ul>
 </li>
 
 <li class="{{ Request::is('excel*') ? 'active' : '' }}">
-    <a href="{!! route('excel.create') !!}"><i class="fa fa-edit"></i><span>Importar archivo de excel</span></a>
+    <a href="{!! route('excel.create') !!}"><i class="fas fa-file-excel"></i><span>  Importar archivo de excel</span></a>
 </li>
 
 <li class="treeview">
     <a href="#">
-        <i class="fa fa-list"></i>
+        <i class="fas fa-lock"></i>
         <span>Roles y permisos</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-right pull-right"></i>
@@ -27,7 +41,7 @@
 
 <li class="treeview">
     <a href="#">
-        <i class="fa fa-list"></i>
+        <i class="fas fa-user-secret"></i>
         <span>Asignaciones</span>
         <span class="pull-right-container">
             <i class="fa fa-angle-right pull-right"></i>

@@ -72,7 +72,7 @@
             <div class="col-sm-6 form">
 
                 {{-- LOGIN FORM --}}
-                <div class="login form-peice">
+                <div id="login-form" class="login form-peice">
                     <form action="{{ url('/login') }}" class="login-form" method="post">
                         {!! csrf_field() !!}
 
@@ -100,14 +100,14 @@
 
                         <div class="CTA">
                             <input type="submit" value="Ingresar">
-                            <a href="#" class="switch">Registrarme</a>
+                            {{-- <a href="#" class="switch">Registrarme</a> --}}
                         </div>
                     </form>
                 </div> <!-- End Login Form-->
 
 
                 {{-- SIGNIP FORM --}}
-                <div class="signup form-peice switched">
+                <div id="signup-form" class="signup form-peice switched">
                     <form action="{{ url('/register') }}" class="signup-form" method="post" id="form_registro">
                         {!! csrf_field() !!}
 

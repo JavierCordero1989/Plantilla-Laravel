@@ -25,6 +25,7 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css"> --}}
     <link rel="stylesheet" href="{{ asset('css/app/_all.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/app/all.css') }}">
     @yield('css')
 </head>
 

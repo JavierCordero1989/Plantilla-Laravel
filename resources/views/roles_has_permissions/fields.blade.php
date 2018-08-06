@@ -1,7 +1,7 @@
 <!-- Roles Disponibles Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('rol_name', 'Roles disponibles:') !!}
-    {!! Form::select('rol_name', $roles, null, ['class' => 'form-control']) !!}
+    {!! Form::select('rol_name', $roles, null, ['class' => 'form-control', 'placeholder'=>'Elija un rol', 'required']) !!}
 </div>
 
 <!-- Permisos Field -->

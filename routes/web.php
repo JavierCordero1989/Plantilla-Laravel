@@ -51,6 +51,12 @@ Route::group(['middleware'=>['auth']], function() {
   Route::get('users/{id}/edit', 'UserController@edit') ->name('users.edit')   /*->middleware('')*/;
   Route::patch('users/{id}', 'UserController@update')  ->name('users.update') /*->middleware('')*/;
   Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy')/*->middleware('')*/;
+  
+  Route::get('users/edit-name/{id}', 'UserController@edit_name')->name('users.edit_name');
+  Route::patch('users/update-name/{id}', 'UserController@update_name')->name('users.update_name');
+  Route::get('users/edit-password/{id}', 'UserController@edit_password')->name('users.edit_password');
+  Route::patch('users/update-password/{id}', 'UserController@update_password')->name('users.update_password');
+  Route::get('usuarios', 'UserController@index_table')->name('usuarios.index_table');
 });
 
 Route::get('asignar-permisos-a-rol/create', 'AssignPermissionsToRolController@create')->name('permissionsToRol.create');
