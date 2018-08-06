@@ -26,7 +26,7 @@
                         @endif
                     @endforeach
                     <td>
-                        {!! Form::open(['route' => [$element['options']['form-route'], $element['options']['id']], 'method' => 'delete']) !!}
+                        {!! Form::open(['route' => [$element['options']['delete'], $element['options']['id']], 'method' => 'delete']) !!}
 
                             <div class="dropdown">
                                 <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

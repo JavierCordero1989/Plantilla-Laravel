@@ -20,7 +20,6 @@ class RolesController extends Controller
                 ],
                 'obj'=>$user,
                 'options'=>[
-                    'form-route' => 'roles.destroy',
                     'id' => $rol->id,
                     'show' => 'roles.show',
                     'edit'=>'roles.edit',

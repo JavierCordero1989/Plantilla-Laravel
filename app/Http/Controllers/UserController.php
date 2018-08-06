@@ -204,7 +204,6 @@ class UserController extends Controller
                 ],
                 'obj' =>$user,
                 'options'=>[
-                    'form-route'=>'users.destroy',
                     'id' => $user->id,
                     'show'=>'users.show',
                     'edit'=>'users.edit',

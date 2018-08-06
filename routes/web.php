@@ -22,24 +22,24 @@ Route::get('/home', 'HomeController@index');
 
 //Rutas para los roles
 Route::group(['middleware'=>['auth']], function() {
-  Route::get('roles', 'RolesController@index')          ->name('roles.index')   ->middleware('permission:indice roles');
-  Route::get('roles/create', 'RolesController@create')  ->name('roles.create')  ->middleware('permission:crear roles');;
-  Route::post('roles/store', 'RolesController@store')   ->name('roles.store')   ->middleware('permission:crear roles');;
-  Route::get('roles/{id}', 'RolesController@show')      ->name('roles.show')    ->middleware('permission:ver roles');;
-  Route::get('roles/{id}/edit', 'RolesController@edit') ->name('roles.edit')    ->middleware('permission:editar roles');;
-  Route::patch('roles/{id}', 'RolesController@update')  ->name('roles.update')  ->middleware('permission:editar roles');;
-  Route::delete('roles/{id}', 'RolesController@destroy')->name('roles.destroy') ->middleware('permission:eliminar roles');;
+  Route::get('roles', 'RolesController@index')          ->name('roles.index')   ->middleware('permission:roles.index');
+  Route::get('roles/create', 'RolesController@create')  ->name('roles.create')  ->middleware('permission:roles.create');;
+  Route::post('roles/store', 'RolesController@store')   ->name('roles.store')   ->middleware('permission:roles.store');;
+  Route::get('roles/{id}', 'RolesController@show')      ->name('roles.show')    ->middleware('permission:roles.show');;
+  Route::get('roles/{id}/edit', 'RolesController@edit') ->name('roles.edit')    ->middleware('permission:roles.edit');;
+  Route::patch('roles/{id}', 'RolesController@update')  ->name('roles.update')  ->middleware('permission:roles.update');;
+  Route::delete('roles/{id}', 'RolesController@destroy')->name('roles.destroy') ->middleware('permission:roles.destroy');;
 });
 
 //Rutas para los permisos
 Route::group(['middleware'=>['auth']], function() {
-  Route::get('permisos', 'PermissionsController@index')          ->name('permisos.index')  /*->middleware('')*/;
-  Route::get('permisos/create', 'PermissionsController@create')  ->name('permisos.create') /*->middleware('')*/;
-  Route::post('permisos/store', 'PermissionsController@store')   ->name('permisos.store')  /*->middleware('')*/;
-  Route::get('permisos/{id}', 'PermissionsController@show')      ->name('permisos.show')   /*->middleware('')*/;
-  Route::get('permisos/{id}/edit', 'PermissionsController@edit') ->name('permisos.edit')   /*->middleware('')*/;
-  Route::patch('permisos/{id}', 'PermissionsController@update')  ->name('permisos.update') /*->middleware('')*/;
-  Route::delete('permisos/{id}', 'PermissionsController@destroy')->name('permisos.destroy')/*->middleware('')*/;
+  Route::get('permisos', 'PermissionsController@index')          ->name('permisos.index')  ->middleware('permission:permisos.index');
+  Route::get('permisos/create', 'PermissionsController@create')  ->name('permisos.create') ->middleware('permission:permisos.create');
+  Route::post('permisos/store', 'PermissionsController@store')   ->name('permisos.store')  ->middleware('permission:permisos.store');
+  Route::get('permisos/{id}', 'PermissionsController@show')      ->name('permisos.show')   ->middleware('permission:permisos.show');
+  Route::get('permisos/{id}/edit', 'PermissionsController@edit') ->name('permisos.edit')   ->middleware('permission:permisos.edit');
+  Route::patch('permisos/{id}', 'PermissionsController@update')  ->name('permisos.update') ->middleware('permission:permisos.update');
+  Route::delete('permisos/{id}', 'PermissionsController@destroy')->name('permisos.destroy')->middleware('permission:permisos.destroy');
 });
 
 //Rutas para los usuarios
@@ -59,11 +59,11 @@ Route::group(['middleware'=>['auth']], function() {
   Route::get('usuarios', 'UserController@index_table')->name('usuarios.index_table');
 });
 
-Route::get('asignar-permisos-a-rol/create', 'AssignPermissionsToRolController@create')->name('permissionsToRol.create');
-Route::post('asignar-permisos-a-rol/store', 'AssignPermissionsToRolController@store') ->name('permissionsToRol.store');
+Route::get('asignar-permisos-a-rol/create', 'AssignPermissionsToRolController@create')->name('permissionsToRol.create')->middleware('permission:permissionsToRol.create');
+Route::post('asignar-permisos-a-rol/store', 'AssignPermissionsToRolController@store') ->name('permissionsToRol.store')->middleware('permission:permissionsToRol.store');
 
-Route::get('asignar-roles-a-usuario/create', 'AssignRolesToUserController@create')->name('rolesToUser.create');
-Route::post('asignar-roles-a-usuario/store', 'AssignRolesToUserController@store') ->name('rolesToUser.store');
+Route::get('asignar-roles-a-usuario/create', 'AssignRolesToUserController@create')->name('rolesToUser.create')->middleware('permission:rolesToUser.create');
+Route::post('asignar-roles-a-usuario/store', 'AssignRolesToUserController@store') ->name('rolesToUser.store')->middleware('permission:rolesToUser.store');
 
 Route::post('importar-excel-bd/importar', 'ExportImportExcelController@importar_desde_excel')->name('excel.import');
 Route::get('importar-excel-bd/create', 'ExportImportExcelController@create')->name('excel.create')->middleware(['role:Super Admin', 'permission:create.excel|permissions.all']);
