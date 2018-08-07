@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Cambiar contraseña de usuario")
+
 @section('content')
     <section class="content-header">
         <h1>

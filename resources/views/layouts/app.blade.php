@@ -6,7 +6,8 @@
     <meta name="author" content="">
     <meta name="keyword" content="">
     <link rel="shortcut icon" href="{{ asset('img/circle_green.png') }}">
-    <title>InfyOm Generator</title>
+    {{-- <title>InfyOm Generator</title> --}}
+    <title>Aplicacion - @yield('title')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     {{-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}

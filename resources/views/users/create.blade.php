@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Crear Usuario")
+
 @section('content')
     <section class="content-header">
         <h1>
