@@ -15,7 +15,7 @@ class LogUsersLogin extends Migration
     {
         Schema::create('log_users_login', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned();
             $table->dateTime('inicio_sesion');
             $table->dateTime('cierre_sesion')->nullable();
             // $table->timestamps();
