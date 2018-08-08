@@ -18,7 +18,7 @@ class RolesController extends Controller
                 'Nombre' => [
                     'data' => $rol->name
                 ],
-                'obj'=>$user,
+                'obj'=>$rol,
                 'options'=>[
                     'id' => $rol->id,
                     'show' => 'roles.show',
