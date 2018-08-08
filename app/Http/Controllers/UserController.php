@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Flash;
 use Auth;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -14,7 +15,8 @@ class UserController extends Controller
         /** Hacer una seleccion de todos los elementos de la BD para llevarlos a la
          *  vista de index.
          */
-        $users = User::all();
+        // $users = User::all();
+        $users = User::whereNull('deleted_at')->get();
 
         /** Se regresa a la vista de index en la carpeta deseada, con los datos obtenidos 
          *  desde la base de datos.
@@ -116,7 +118,8 @@ class UserController extends Controller
         }
 
         /** Se borra el objeto encontrado */
-        $user->delete();
+        $user->deleted_at = Carbon::now();
+        $user->save();
 
         /** Se genera un mensaje de exito y se redirige a la ruta index */
         Flash::success('Se ha eliminado el usuario '.$user->name.' correctamente.');
@@ -130,7 +133,8 @@ class UserController extends Controller
         $user = User::find($id);
 
         if(empty($user)) {
-            return "No encontrado.";
+            Flash::error('Usuario no encontrado');
+            return redirect(route('users.index'));
         }
 
         return view('users.edit-name', compact('user'));
