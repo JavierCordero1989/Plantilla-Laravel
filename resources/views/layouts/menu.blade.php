@@ -7,9 +7,12 @@
         </span>
     </a>
     <ul class="treeview-menu">
-        <li class="{{ Request::is('users*') ? 'active' : '' }}">
-            <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Lista</span></a>
-        </li>
+        @can('users.index')
+            <li class="{{ Request::is('users*') ? 'active' : '' }}">
+                <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Lista</span></a>
+            </li>
+        @endcan
+
         @can('users.index_table'))
             <li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
                 <a href="{!! route('usuarios.index_table') !!}"><i class="fa fa-edit"></i><span>Lista #2</span></a>
@@ -18,9 +21,11 @@
     </ul>
 </li>
 
-<li class="{{ Request::is('excel*') ? 'active' : '' }}">
-    <a href="{!! route('excel.create') !!}"><i class="fas fa-file-excel"></i><span>  Importar archivo de excel</span></a>
-</li>
+@can('create.excel')
+    <li class="{{ Request::is('excel*') ? 'active' : '' }}">
+        <a href="{!! route('excel.create') !!}"><i class="fas fa-file-excel"></i><span>  Importar archivo de excel</span></a>
+    </li>
+@endcan
 
 <li class="treeview">
     <a href="#">
@@ -54,12 +59,16 @@
         </span>
     </a>
     <ul class="treeview-menu">
-        <li class="{{ Request::is('permissionsToRol*') ? 'active' : '' }}">
-            <a href="{!! route('permissionsToRol.create') !!}"><i class="fa fa-edit"></i><span>Asignar permisos a rol</span></a>
-        </li>
-        
-        <li class="{{ Request::is('rolesToUser*') ? 'active' : '' }}">
-            <a href="{!! route('rolesToUser.create') !!}"><i class="fa fa-edit"></i><span>Asignar roles a usuario</span></a>
-        </li>
+        @can('permissionsToRol.create')
+            <li class="{{ Request::is('permissionsToRol*') ? 'active' : '' }}">
+                <a href="{!! route('permissionsToRol.create') !!}"><i class="fa fa-edit"></i><span>Asignar permisos a rol</span></a>
+            </li>
+        @endcan
+
+        @can('rolesToUser.create')
+            <li class="{{ Request::is('rolesToUser*') ? 'active' : '' }}">
+                <a href="{!! route('rolesToUser.create') !!}"><i class="fa fa-edit"></i><span>Asignar roles a usuario</span></a>
+            </li>
+        @endcan
     </ul>
 </li>

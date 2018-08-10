@@ -7,7 +7,7 @@
     <meta name="keyword" content="">
     <link rel="shortcut icon" href="{{ asset('img/circle_green.png') }}">
     {{-- <title>InfyOm Generator</title> --}}
-    <title>Aplicacion - @yield('title')</title>
+    <title>{{ config('global.site_title') }} - @yield('title')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     {{-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
@@ -38,8 +38,8 @@
         <!-- Logo -->
         <a href="{!! url('/home') !!}" class="logo">
             {{-- <b>Javier Cordero</b> --}}
-            <span class="logo-mini"><b>JC</b></span>
-            <span class="logo-lg"><b>Javier Cordero</b></span>
+            <span class="logo-mini"><b>{{ config('global.sidebar_title_min') }}</b></span>
+            <span class="logo-lg"><b>{{ config('global.sidebar_title') }}</b></span>
         </a>
 
         <!-- Header Navbar -->
@@ -103,7 +103,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer" style="max-height: 100px;text-align: center">
-        <strong>Copyright © 2016 <a href="https://github.com/JavierCordero1989/Plantilla-Laravel.git" target="_blank">Plantilla Laravel-Infyom</a>.</strong> Derechos Reservados.
+        <strong>Copyright © 2018 <a href="https://github.com/JavierCordero1989/Plantilla-Laravel.git" target="_blank">Plantilla Laravel-Infyom</a>.</strong> Derechos Reservados.
     </footer>
 
 </div>
