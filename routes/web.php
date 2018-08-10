@@ -66,7 +66,7 @@ Route::get('asignar-roles-a-usuario/create', 'AssignRolesToUserController@create
 Route::post('asignar-roles-a-usuario/store', 'AssignRolesToUserController@store') ->name('rolesToUser.store')->middleware('permission:rolesToUser.store');
 
 Route::post('importar-excel-bd/importar', 'ExportImportExcelController@importar_desde_excel')->name('excel.import');
-Route::get('importar-excel-bd/create', 'ExportImportExcelController@create')->name('excel.create')->middleware(['role:Super Admin', 'permission:create.excel|permissions.all']);
+Route::get('importar-excel-bd/create', 'ExportImportExcelController@create')->name('excel.create')->middleware(['role:Super Admin', 'permission:create.excel']);
 
 //Plantilla rutas
 // Route::group(['middleware'=>['auth']], function() {

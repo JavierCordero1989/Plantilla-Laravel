@@ -144,6 +144,36 @@ class PermissionsTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+        Permission::create([
+            'name' => 'users.edit_name',
+            'guard_name' => 'web',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        Permission::create([
+            'name' => 'users.update_name',
+            'guard_name' => 'web',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        Permission::create([
+            'name' => 'users.edit_password',
+            'guard_name' => 'web',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        Permission::create([
+            'name' => 'users.update_password',
+            'guard_name' => 'web',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        Permission::create([
+            'name' => 'users.index_table',
+            'guard_name' => 'web',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
 
         //Permisos para asignar permisos a roles
         Permission::create([
@@ -168,6 +198,14 @@ class PermissionsTableSeeder extends Seeder
         ]);
         Permission::create([
             'name' => 'rolesToUser.store',
+            'guard_name' => 'web',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        //Permisos para subir archivos de excel a la BD
+        Permission::create([
+            'name' => 'excel.create',
             'guard_name' => 'web',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
