@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Flash;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -44,6 +45,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        // if($exception->getStatusCode() == 403) {
+        //     dd("No tiene permisos");
+        // }
+
+        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+            // Flash::warning('No tiene permisos para realizar esta acción');
+            abort(403, 'No tiene permisos para realizar esta acción');
+        }
+
         return parent::render($request, $exception);
     }
 
