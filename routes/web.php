@@ -44,19 +44,19 @@ Route::group(['middleware'=>['auth']], function() {
 
 //Rutas para los usuarios
 Route::group(['middleware'=>['auth']], function() {
-  Route::get('users', 'UserController@index')          ->name('users.index')  /*->middleware('')*/;
-  Route::get('users/create', 'UserController@create')  ->name('users.create') /*->middleware('')*/;
-  Route::post('users/store', 'UserController@store')   ->name('users.store')  /*->middleware('')*/;
-  Route::get('users/{id}', 'UserController@show')      ->name('users.show')   /*->middleware('')*/;
-  Route::get('users/{id}/edit', 'UserController@edit') ->name('users.edit')   /*->middleware('')*/;
-  Route::patch('users/{id}', 'UserController@update')  ->name('users.update') /*->middleware('')*/;
-  Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy')/*->middleware('')*/;
+  Route::get('users', 'UserController@index')          ->name('users.index')  ->middleware('permission:users.index');
+  Route::get('users/create', 'UserController@create')  ->name('users.create') ->middleware('permission:users.create');
+  Route::post('users/store', 'UserController@store')   ->name('users.store')  ->middleware('permission:users.store');
+  Route::get('users/{id}', 'UserController@show')      ->name('users.show')   ->middleware('permission:users.show');
+  Route::get('users/{id}/edit', 'UserController@edit') ->name('users.edit')   ->middleware('permission:users.edit');
+  Route::patch('users/{id}', 'UserController@update')  ->name('users.update') ->middleware('permission:users.update');
+  Route::delete('users/{id}', 'UserController@destroy')->name('users.destroy')->middleware('permission:users.destroy');
   
-  Route::get('users/edit-name/{id}', 'UserController@edit_name')->name('users.edit_name');
-  Route::patch('users/update-name/{id}', 'UserController@update_name')->name('users.update_name');
-  Route::get('users/edit-password/{id}', 'UserController@edit_password')->name('users.edit_password');
-  Route::patch('users/update-password/{id}', 'UserController@update_password')->name('users.update_password');
-  Route::get('usuarios', 'UserController@index_table')->name('usuarios.index_table');
+  Route::get('users/edit-name/{id}', 'UserController@edit_name')->name('users.edit_name')->middleware('permission:users.edit_name');
+  Route::patch('users/update-name/{id}', 'UserController@update_name')->name('users.update_name')->middleware('permission:users.update_name');
+  Route::get('users/edit-password/{id}', 'UserController@edit_password')->name('users.edit_password')->middleware('permission:users.edit_password');
+  Route::patch('users/update-password/{id}', 'UserController@update_password')->name('users.update_password')->middleware('permission:users.update_password');
+  Route::get('usuarios', 'UserController@index_table')->name('usuarios.index_table')->middleware('permission:users.index_table');
 });
 
 Route::get('asignar-permisos-a-rol/create', 'AssignPermissionsToRolController@create')->name('permissionsToRol.create')->middleware('permission:permissionsToRol.create');
