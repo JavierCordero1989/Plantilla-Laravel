@@ -10,9 +10,11 @@
         <li class="{{ Request::is('users*') ? 'active' : '' }}">
             <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Lista</span></a>
         </li>
-        <li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
-            <a href="{!! route('usuarios.index_table') !!}"><i class="fa fa-edit"></i><span>Lista #2</span></a>
-        </li>
+        @can('users.index_table'))
+            <li class="{{ Request::is('usuarios*') ? 'active' : '' }}">
+                <a href="{!! route('usuarios.index_table') !!}"><i class="fa fa-edit"></i><span>Lista #2</span></a>
+            </li>
+        @endcan
     </ul>
 </li>
 
@@ -29,13 +31,17 @@
         </span>
     </a>
     <ul class="treeview-menu">
-        <li class="{{ Request::is('roles*') ? 'active' : '' }}">
-            <a href="{!! route('roles.index') !!}"><i class="fa fa-edit"></i><span>Roles</span></a>
-        </li>
-        
-        <li class="{{ Request::is('permisos*') ? 'active' : '' }}">
-            <a href="{!! route('permisos.index') !!}"><i class="fa fa-edit"></i><span>Permisos</span></a>
-        </li>
+        @can('roles.index')
+            <li class="{{ Request::is('roles*') ? 'active' : '' }}">
+                <a href="{!! route('roles.index') !!}"><i class="fa fa-edit"></i><span>Roles</span></a>
+            </li>
+        @endcan
+
+        @can('permisos.index')
+            <li class="{{ Request::is('permisos*') ? 'active' : '' }}">
+                <a href="{!! route('permisos.index') !!}"><i class="fa fa-edit"></i><span>Permisos</span></a>
+            </li>
+        @endcan
     </ul>
 </li>
 
